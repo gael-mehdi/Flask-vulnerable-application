@@ -10,7 +10,7 @@ import os
 SECRET_KEY = os.urandom(32)
 
 # Grabs the folder where the script runs.
-# In my case it is, "F:\DataScience_Ai\hobby_projects\mvc_project\src"
+# <user_path>/srie/repos/pyflasql
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 # Enable debug mode, that will refresh the page when you make changes.
