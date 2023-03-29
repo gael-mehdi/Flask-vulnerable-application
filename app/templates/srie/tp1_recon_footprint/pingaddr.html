@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ping</title>
+</head>
+
+<body>
+    <h1>Ping an IP address</h1>
+
+    <h3>Tool: ping -c {npings} {ping_address}</h3>
+
+    <form method="POST" action="">
+        {{ content["form"].hidden_tag() }}
+        {{ content["form"].ip_address }}
+        {{ content["form"].npings }}
+        {{ content["form"].submit }}
+    </form>
+
+    <br>
+    <h2>Command output:</h2>
+    <pre>{{ content["shell_output"] }}</pre>
+    <br>
+    
+    <hr>
+    <a href="{{url_for('blueprint.dashboard')}}">Back to Dashboard</a>
+    <br>
+    <a href="{{url_for('blueprint.logout')}}">Press here to logout</a>
+</body>
+
+</html>
