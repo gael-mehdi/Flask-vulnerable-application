@@ -6,17 +6,16 @@
 Configures the address paths (URL routes)
 """
 from flask import Blueprint
-from ..controllers.controller import index, login, register, dashboard, logout
-from ..controllers.srie.tp1_recon_footprint.controller import srie_tp1_recon_footprint, srie_tp1_pingaddr, srie_tp1_ipaddr
-from ..controllers.srie.tp2_scanning_networks.controller import srie_tp2_scanning_networks
-from ..controllers.srie.tp3_enumeration.controller import srie_tp3_enumeration
-from ..controllers.srie.tp4_gaining_access.controller import srie_tp4_gaining_access
-from ..controllers.user_profile.controller import user_profile
-# from app import myapp
+from ...controllers.controller import index, login, register, dashboard, logout
+from ...controllers.srie.tp1_recon_footprint.controller import srie_tp1_recon_footprint, srie_tp1_pingaddr, srie_tp1_ipaddr
+from ...controllers.srie.tp2_scanning_networks.controller import srie_tp2_scanning_networks
+from ...controllers.srie.tp3_enumeration.controller import srie_tp3_enumeration
+from ...controllers.srie.tp4_gaining_access.controller import srie_tp4_gaining_access
+from ...controllers.user_profile.controller import user_profile
 
 blueprint = Blueprint('blueprint', __name__, template_folder='../templates')
-# myapp.register_blueprint(blueprint, url_prefix='/')
 
+# Home
 blueprint.route('/')(index)
 blueprint.route('/login', methods=['GET', 'POST'])(login)
 blueprint.route('/register', methods=['GET', 'POST'])(register)

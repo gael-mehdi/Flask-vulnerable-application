@@ -1,4 +1,4 @@
-from app.controllers.controller import MyApp
+from .models.app import PyFlaSQL
 
-myapp_obj = MyApp()
-myapp = myapp_obj.myapp
+pyflasql_obj = PyFlaSQL()
+PyFlaSQL = pyflasql_obj.myapp
