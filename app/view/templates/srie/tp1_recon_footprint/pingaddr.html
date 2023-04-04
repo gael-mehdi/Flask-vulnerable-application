@@ -12,14 +12,14 @@
     <h1>PyFlaSQL</h1>
     <hr>
     <h2>Ping an IP address</h2>
-    <h3><pre>$ ping -c {npings} {ping_address}</pre></h3>
+    <h3><pre>$ ping -c {npings} {ip_address}</pre></h3>
 
 
     <form method="POST" action="">
         {{ content["form"].hidden_tag() }}
         <label for="ip_address">IP Address:</label><br>
         <input type="text" id="ip_address" name="ip_address" placeholder="x.x.x.x" value=""><br>
-        <label for="npings">Number of pings}:</label><br>
+        <label for="npings">Number of pings:</label><br>
         <input type="npings" id="npings" name="npings" placeholder="3" value=""><br><br>
         <input type="submit" name="Ping" value="Ping">
     </form>
