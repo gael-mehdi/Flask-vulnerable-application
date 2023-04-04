@@ -9,7 +9,9 @@
 </head>
 
 <body>
-    <h1>Register Page</h1>
+    <h1>PyFlaSQL</h1>
+    <hr>
+    <h2>Register Page</h2>
     
     <form method="POST" action="">
         {{ form.hidden_tag() }}
@@ -17,9 +19,10 @@
         <input type="text" id="uname" name="username" value=""><br>
         <label for="pwd">Password:</label><br>
         <input type="password" id="pwd" name="password" value=""><br><br>
-        <input type="submit" name="login" value="Login">
+        <input type="submit" name="Register" value="Register">
     </form>
 
+    <hr>
     <a href="{{ url_for('blueprint.login') }}">Already have an account? Log In</a>
 </body>
 

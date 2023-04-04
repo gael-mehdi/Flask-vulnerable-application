@@ -9,7 +9,9 @@
 </head>
 
 <body>
-    <h1>Login Page</h1>
+    <h1>PyFlaSQL</h1>
+    <hr>
+    <h2>Login Page</h2>
 
     <form method="POST" action="">
         {{ form.hidden_tag() }}
@@ -20,7 +22,7 @@
         <input type="submit" name="login" value="Login">
     </form>
     
-
+    <hr>
     <a href="{{ url_for('blueprint.register') }}">Don't have an account? Sign Up</a>
 </body>
 
