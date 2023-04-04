@@ -14,16 +14,14 @@
     <h2>Command</h2>
     <h3><pre>$ ping -c {npings} {ping_address}</pre></h3>
 
+
     <form method="POST" action="">
         {{ content["form"].hidden_tag() }}
-        <h3>{ping_address}: {{ content["form"].ip_address }}</h3>
-        
-        <h3>{npings}: {{ content["form"].npings }}</h3>
-        
-        <h3>{timeout}: to be implemented</h3>
-        <h3>{other_parameters} ...</h3>
-        
-        {{ content["form"].submit }}
+        <label for="ip_address">IP Address:</label><br>
+        <input type="text" id="ip_address" name="ip_address" placeholder="x.x.x.x" value=""><br>
+        <label for="npings">Number of pings}:</label><br>
+        <input type="npings" id="npings" name="npings" placeholder="3" value=""><br><br>
+        <input type="submit" name="Ping" value="Ping">
     </form>
 
     <br>
