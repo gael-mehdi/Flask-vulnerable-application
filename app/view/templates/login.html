@@ -13,10 +13,13 @@
 
     <form method="POST" action="">
         {{ form.hidden_tag() }}
-        {{ form.username }}
-        {{ form.password }}
-        {{ form.submit }}
+        <label for="uname">Username:</label><br>
+        <input type="text" id="uname" name="username" value=""><br>
+        <label for="pwd">Password:</label><br>
+        <input type="password" id="pwd" name="password" value=""><br><br>
+        <input type="submit" name="login" value="Login">
     </form>
+    
 
     <a href="{{ url_for('blueprint.register') }}">Don't have an account? Sign Up</a>
 </body>

@@ -12,9 +12,9 @@ from wtforms.validators import DataRequired, Email, InputRequired, Length, Valid
 
 class PingAddrForm(FlaskForm):
     ip_address = StringField(validators=[
-        InputRequired(), Length(min=2, max=50)], render_kw={"placeholder": "ip_address"})
+        InputRequired(), Length(min=2, max=50)], render_kw={"placeholder": "IP Address"})
 
     npings = StringField(validators=[
-        InputRequired(), Length(min=1, max=3)], render_kw={"placeholder": "npings"})
+        Length(min=0, max=3)], render_kw={"placeholder": "Number of pings"})
     
     submit = SubmitField('Ping')

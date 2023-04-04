@@ -10,7 +10,7 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, log
 from flask_sqlalchemy import SQLAlchemy
 # from flask_migrate import Migrate
 from ....models.sql import db, User
-from ...utils import get_shell_output
+from ...utils import get_shell_output, CheckIf
 from ....models.srie.tp1_recon_footprint.forms import PingAddrForm
 
 
@@ -76,6 +76,13 @@ def srie_tp1_pingaddr():
         # get ip_address and number of pings from the user interface (UI)
         ip_address = content["form"].ip_address.data
         npings = content["form"].npings.data
+        print(type(npings))
+        print(npings)
+        try:
+            if CheckIf.is_number(int(npings)):
+                pass
+        except:
+            npings = 3
         content["shell_output"] = get_shell_output(f"ping -c {npings} {ip_address}")
         # print(content["shell_output"])  # for debug only
         return render_template(url_for('blueprint.srie_tp1_pingaddr')+'.html', content=content)

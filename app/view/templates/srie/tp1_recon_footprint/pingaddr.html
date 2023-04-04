@@ -11,15 +11,26 @@
 <body>
     <h1>Ping an IP address</h1>
 
-    <h3>Tool: ping -c {npings} {ping_address}</h3>
+    <h2>Command</h2>
+    <h3><pre>$ ping -c {npings} {ping_address}</pre></h3>
 
     <form method="POST" action="">
         {{ content["form"].hidden_tag() }}
-        {{ content["form"].ip_address }}
-        {{ content["form"].npings }}
+        <h3>{ping_address}: {{ content["form"].ip_address }}</h3>
+        
+        <h3>{npings}: {{ content["form"].npings }}</h3>
+        
+        <h3>{timeout}: to be implemented</h3>
+        <h3>{other_parameters} ...</h3>
+        
         {{ content["form"].submit }}
     </form>
 
+    <br>
+    <h2>Help</h2>
+    <h3>{ping_address}: the IP address.</h3>
+    <h3>{npings}: you can set the number of times ping is run. </h3>
+    <h3>Fields marked with * are mandatory</h3>
     <br>
     <h2>Command output:</h2>
     <pre>{{ content["shell_output"] }}</pre>
