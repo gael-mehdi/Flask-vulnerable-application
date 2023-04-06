@@ -46,7 +46,7 @@ def srie_tp1_ipaddr():
     # Create a dictionary to store the private and public IP addresses
     content = {"ip_address_private": "x.x.x.x", "ip_address_public": "x.x.x.x"}
     # Uses get_shell_output() to execute a command in the shell and store the output in the dict.
-    content["ip_address_private"] = get_shell_output(f"ipconfig getifaddr en0")
+    content["ip_address_private"] = get_shell_output(f"hostname -I")
     content["ip_address_public"] = "To be implemented"
     # print(content["ip_address_private"]) # for debug only
     # print(content["ip_address_public"]) # for debug only

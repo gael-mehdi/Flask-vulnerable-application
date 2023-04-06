@@ -15,11 +15,12 @@
     
     <form method="POST" action="">
         {{ form.hidden_tag() }}
-        <label for="uname">Username:</label><br>
-        <input type="text" id="uname" name="username" value=""><br>
-        <label for="pwd">Password:</label><br>
-        <input type="password" id="pwd" name="password" value=""><br><br>
-        <input type="submit" name="Register" value="Register">
+        {{ form.username }}
+        {{ form.password }}
+        {{ form.submit }}
+    </form>
+
+
     </form>
 
     <hr>
