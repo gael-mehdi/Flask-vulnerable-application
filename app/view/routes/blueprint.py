@@ -13,7 +13,7 @@ from ...controllers.srie.tp3_enumeration.controller import srie_tp3_enumeration
 from ...controllers.srie.tp4_gaining_access.controller import srie_tp4_gaining_access
 from ...controllers.user_profile.controller import user_profile
 
-blueprint = Blueprint('blueprint', __name__, template_folder='../templates')
+blueprint = Blueprint('blueprint', __name__, template_folder='../templates', static_folder='../templates/styles')
 
 # Home
 blueprint.route('/')(index)

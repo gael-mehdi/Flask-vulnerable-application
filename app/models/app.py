@@ -20,7 +20,7 @@ class PyFlaSQL():
             db.create_all()
 
         # debug - print the URL map of blueprint (check the console)
-        # print(self.myapp.url_map)
+        print(self.myapp.url_map)
 
         self.login_manager = LoginManager()
         self.login_manager.init_app(self.myapp)

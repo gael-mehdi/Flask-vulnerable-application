@@ -13,6 +13,16 @@ from .sql import db, User
 
 
 class RegisterForm(FlaskForm):
+    """
+    Represents a registration form for user registration.
+
+    Attributes:
+        - username: StringField with validators for input required and length constraints,
+        and a placeholder for username input.
+        - password: PasswordField with validators for input required and length constraints,
+        and a placeholder for password input.
+        - submit: SubmitField with label 'Register' for submitting the form.
+"""
     username = StringField(validators=[
         InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
 
@@ -22,11 +32,30 @@ class RegisterForm(FlaskForm):
     submit = SubmitField('Register')
 
     def validate_username(self, username):
+        """
+        Validates the uniqueness of the username input.
+
+        Args:
+            - username: StringField for username input.
+
+        Raises:
+            - ValidationError: if the username already exists in the database.
+        """
         existing_user_username = User.query.filter_by(username=username.data).first()
         if existing_user_username:
             raise ValidationError('That username already exists. Please choose a different one.')
 
 class LoginForm(FlaskForm):
+    """
+    Represents a login form for user authentication.
+
+    Attributes:
+        - username: StringField with validators for input required and length constraints,
+        and a placeholder for username input.
+        - password: PasswordField with validators for input required and length constraints,
+        and a placeholder for password input.
+        - submit: SubmitField with label 'Login' for submitting the form.
+    """
     username = StringField(validators=[
         InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "    "})
 

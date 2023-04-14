@@ -20,7 +20,7 @@ def get_bcrypt():
 
 def index():
     """
-        Control the index page.
+        Handles the logic for / (home page)
 
         Args:
             - None.
@@ -33,7 +33,7 @@ def index():
 
 def login():
     """
-        Control the login page.
+        Handles the logic for /login page
 
         Args:
             - None.
@@ -54,7 +54,7 @@ def login():
 @login_required
 def dashboard():
     """
-        Control the dashboard page.
+        Handles the logic for /dashboard page
         Login is required to view this page.
 
         Args:
@@ -69,7 +69,7 @@ def dashboard():
 @login_required
 def logout():
     """
-        Control the logout page.
+        Handles the logic for /logout page
         Login is required to view this page.
 
         Args:
@@ -83,7 +83,7 @@ def logout():
 
 def register():
     """
-        Control the register page.
+        Handles the logic for /register page
 
         Args:
             - None.

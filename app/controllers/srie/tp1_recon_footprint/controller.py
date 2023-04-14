@@ -17,14 +17,14 @@ from ....models.srie.tp1_recon_footprint.forms import PingAddrForm
 @login_required
 def srie_tp1_recon_footprint():
     """
-        Logic for /srie/tp1_recon_footprint/home
+        Handles the logic for /srie/tp1_recon_footprint/home
         Login is required to view this page
 
         Args:
             - None.
 
         Returns:
-            - rendered template view/templates/srie/tp1_recon_footprint/home.html
+            - rendered template view/templates/srie/tp1_recon_footprint/home.html with the username passed as a context variable
         """
     username = current_user.username
     return render_template(url_for('blueprint.srie_tp1_recon_footprint')+'.html', username=username)
@@ -32,7 +32,7 @@ def srie_tp1_recon_footprint():
 @login_required
 def srie_tp1_ipaddr():
     """
-        Logic for view/templates/srie/tp1_recon_footprint/ipaddr.html
+        Handles the logic for view/templates/srie/tp1_recon_footprint/ipaddr.html
         Login is required to view this page
 
         Print in the user interface private and public IP addresses.
@@ -41,7 +41,7 @@ def srie_tp1_ipaddr():
             - None.
 
         Returns:
-            - rendered template view/templates/srie/tp1_recon_footprint/ipaddr.html
+            - rendered template view/templates/srie/tp1_recon_footprint/ipaddr.html with content passed as a context variable
         """
     # Create a dictionary to store the private and public IP addresses
     content = {"ip_address_private": "x.x.x.x", "ip_address_public": "x.x.x.x"}
@@ -56,7 +56,7 @@ def srie_tp1_ipaddr():
 @login_required
 def srie_tp1_pingaddr():
     """
-        Logic for view/templates/srie/tp1_recon_footprint/pingaddr.html
+        Handles the logic for view/templates/srie/tp1_recon_footprint/pingaddr.html
         Login is required to view this page
 
         Print in the user interface private and public IP addresses.
@@ -65,7 +65,7 @@ def srie_tp1_pingaddr():
             - None.
 
         Returns:
-            - rendered template view/templates/srie/tp1_recon_footprint/pingaddr.html
+            - rendered template view/templates/srie/tp1_recon_footprint/pingaddr.html with content passed as a context variable
         """
     # Create a dict to store the formulary and the shell output. This dict is passed to the .html file.
     content = {"form": PingAddrForm(),
@@ -76,8 +76,6 @@ def srie_tp1_pingaddr():
         # get ip_address and number of pings from the user interface (UI)
         ip_address = content["form"].ip_address.data
         npings = content["form"].npings.data
-        print(type(npings))
-        print(npings)
         try:
             if CheckIf.is_number(int(npings)):
                 pass
