@@ -73,14 +73,9 @@ def srie_tp1_pingaddr():
                }
     
     if content["form"].validate_on_submit():
-        # get ip_address and number of pings from the user interface (UI)
+        # Get IP address and number of pings from the user interface (UI)
         ip_address = content["form"].ip_address.data
         npings = content["form"].npings.data
-        try:
-            if CheckIf.is_number(int(npings)):
-                pass
-        except:
-            npings = 3
         content["shell_output"] = get_shell_output(f"ping -c {npings} {ip_address}")
         # print(content["shell_output"])  # for debug only
         return render_template(url_for('blueprint.srie_tp1_pingaddr')+'.html', content=content)
