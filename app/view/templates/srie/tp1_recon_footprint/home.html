@@ -3,31 +3,69 @@ This file is part of PyFlaSQL.
 Original author: Raphael Viera (raphael.viera@emse.fr)
 License: check the LICENSE file.
 -->
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% block title %}SRIE > TP1 - Reconnaissance / Footprint{% endblock %}
+{% block content %}
+<div class="container p-5 my-5">
+    <!-- Main Title -->
+    <h1 class="text-center">SRIE > TP1 - Reconnaissance / Footprint</h2>
+    <div class="container p-5 my-5 border">
+        <!-- Description -->
+        <p class="lead">
+            The key to successfully exploiting or infiltrating a remote system lies in gathering information. 
+            The initial step in the penetration testing is reconnaissance, which involves using tools to retrieve information 
+            from the target system. 
+        </p>
+                
+        <p class="lead">
+            In this lab, you will learn how to use social engineering techniques to obtain information 
+            that can be used to gain access to user passwords and servers. 
+            Reconnaissance plays a crucial role in achieving our goals, as it helps us understand the security posture of 
+            the target system. The more we learn about the target's security measures, 
+            the better we can understand their practices and frequency of security checks. 
+        </p>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('blueprint.static', filename='main.css') }}">
-</head>
+        <p class="lead">
+            Reconnaissance is a systematic and methodical process that provides a comprehensive profile of the 
+            target's security environment, allowing us to narrow down the potential attack vectors. 
+            This includes identifying specific domains, subdomains, or IP ranges to focus our efforts on, 
+            thus reducing the overall attack surface. 
+        </p>
+    </div>
 
-<body>
-    <h1>PyFlaSQL</h1>
-    <hr>
-    <h2>Hello {{username}}</h2>
-    <hr>
-    <h2>TP1 - Reconnaissance / Footprint</h2>
-    <h3><a href="{{url_for('blueprint.srie_tp1_ipaddr')}}">IP Address</a></h3>
-    <h3> <a href="{{url_for('blueprint.srie_tp1_pingaddr')}}">Ping an IP address</a></h3>
-    <h3><a href="#">Method 3</a></h3>
-    
-    <hr>
-    <a href="{{url_for('blueprint.dashboard')}}">DashBoard</a>
-    <br>
-    <a href="{{url_for('blueprint.logout')}}">Logout</a>
-</body>
+    <!-- Useful tools title -->
+    <h2 class="mt-5 text-center">Useful tools used in this phase</h2>    
 
-</html>
+    <div class="container p-5 my-5 border">
+        <p class="lead">
+            Below is a list of tools that can be used for this pentesting phase:
+        </p>
+        
+        <ol class="list-group">
+            <li class="list-group-item">
+                <h5><a href="{{url_for('blueprint.srie_tp1_ipaddr')}}" class="list-group-item-action">IP Addresses (private and public)</a></h5>
+                <p class="lead">
+                    Internet Protocol (IP) address refers to a unique numerical label assigned to a networked device, 
+                    such as a computer, server, router, or other networked device, that uses the IP for communication within an 
+                    IP-based network. IP addresses are used to uniquely identify and locate devices on a network, allowing them to 
+                    send and receive data packets.
+                </p>
+            </li>
+            <li class="list-group-item">
+                <h5><a href="#" class="list-group-item-action">WHOIS</a></h5>
+                <p class="lead">
+                    To be implemented by the student!
+                </p>
+            </li>
+            <li class="list-group-item">
+                <h5><a href="#" class="list-group-item-action">Tool 4</a></h5>
+                <p class="lead">
+                    To be implemented by the student!
+                </p>
+            </li>
+        </ol>
+    </div>
+
+</div>
+{% endblock %}
+

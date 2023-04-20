@@ -11,26 +11,39 @@ License: check the LICENSE file.
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="stylesheet" href="{{ url_for('blueprint.static', filename='main.css') }}">
+    <!-- Link Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('blueprint.static', filename='bootstrap.min.css') }}">
 </head>
 
-<body>
-    <h1>PyFlaSQL</h1>
-    <hr>
-    <h2>Register Page</h2>
-    
-    <form method="POST" action="">
-        {{ form.hidden_tag() }}
-        {{ form.username }}
-        {{ form.password }}
-        {{ form.submit }}
-    </form>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <h1 class="text-center mb-4">PyFlaSQL</h1>
+                <hr>
+                <h3 class="text-center mb-4">Register Page</h3>
 
+                <form method="POST" action="">
+                    <!-- Add Bootstrap form classes -->
+                    <div class="form-group">
+                        {{ form.hidden_tag() }}
+                        {{ form.username.label(class="form-label") }}
+                        {{ form.username(class="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.password.label(class="form-label") }}
+                        {{ form.password(class="form-control") }}
+                    </div>
+                    <div class="form-group text-center">
+                        {{ form.submit(class="btn btn-primary") }}
+                    </div>
+                </form>
 
-    </form>
-
-    <hr>
-    <a href="{{ url_for('blueprint.login') }}">Already have an account? Log In</a>
+                <hr>
+                <p class="text-center">Already have an account? <a href="{{ url_for('blueprint.login') }}">Log In</a></p>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

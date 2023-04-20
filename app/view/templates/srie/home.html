@@ -1,0 +1,76 @@
+<!-- 
+This file is part of PyFlaSQL.
+Original author: Raphael Viera (raphael.viera@emse.fr)
+License: check the LICENSE file.
+-->
+{% extends "base.html" %}
+{% block title %}SRIE{% endblock %}
+{% block content %}
+<div class="container p-5 my-5">
+    <!-- Main Title -->
+    <h1 class="text-center">Welcome to the Penetration Testing Course (SRIE)</h1>
+    <div class="container p-5 my-5 border">
+        <!-- Description -->
+        <p class="lead">
+            Pen testing, is a evaluation of an organization's ability to safeguard its networks, 
+            applications, endpoints, and users from both external and internal attempts to bypass its security controls and 
+            gain unauthorized or privileged access to protected assets.
+        </p>
+                
+        <p class="lead">
+            PyFlaSQL is the framework used for cybersecurity courses in the ISMIN cycle of Mines Saint-Etienne. 
+            It provides ISMIN students with a foundation to create their own pentesting tools, allowing them to 
+            evaluate local networks, web services, and applications. PyFlaSQL is a valuable resource for developing 
+            custom pentesting solutions in cybersecurity education.
+        </p>
+
+    </div>
+
+    <!-- Four steps section -->
+    <h2 class="mt-5 my-5 text-center">The Four Steps in the Penetration Testing Process</h2>
+
+    <div class="container p-5 my-5 border">
+        <p class="lead">
+            In this course, you will learn about assessing and evaluating the security of networks, applications, 
+            and systems. The pentesting process is divided into four key steps, which you will implement through 
+            practical labs and code exercises to gain hands-on experience. You will develop skills in identifying 
+            vulnerabilities, exploiting weaknesses, and evaluating security posture.
+        </p>
+        <ol class="list-group mt-5">
+            <li class="list-group-item">
+                <h5><a href="{{url_for('blueprint.srie_tp1_recon_footprint')}}" class="list-group-item-action">TP1 - Reconnaissance / Footprint</a></h5>
+                <p class="lead">This step involves gathering information about the target system or network, such as identifying the
+                    IP addresses and social engineering techniques to obtain valuable information that can be used to gain access 
+                    to user passwords and servers. You will learn how to perform reconnaissance techniques and footprinting to 
+                    gather critical information that can help you understand the target's vulnerabilities.
+                </p>
+            </li>
+            <li class="list-group-item">
+                <h5><a href="{{url_for('blueprint.srie_tp2_scanning_networks')}}" class="list-group-item-action">TP2 - Scanning Networks</a></h5>
+                <p class="lead">In this step, you will be learning how to use various scanning tools to identify open ports,
+                    vulnerable services, and potential entry points into the target system or network. You will
+                    explore techniques such as port scanning, vulnerability scanning, and network mapping to
+                    identify potential security weaknesses.
+                </p>
+            </li>
+            <li class="list-group-item">
+                <h5><a href="{{url_for('blueprint.srie_tp3_enumeration')}}" class="list-group-item-action">TP3 - Enumeration</a></h5>
+                <p class="lead">Once you have identified potential vulnerabilities in the target system, the next step is
+                    enumeration. You will learn how to extract valuable information, such as user accounts, system
+                    configurations, and network resources, to gain a deeper understanding of the target
+                    environment. Enumeration is a crucial step in identifying potential avenues for gaining
+                    unauthorized access.
+                </p>
+            </li>
+            <li class="list-group-item">
+                <h5><a href="{{url_for('blueprint.srie_tp4_gaining_access')}}" class="list-group-item-action">TP4 - Gaining Access</a></h5>
+                <p class="lead">The final step in the penetration testing process is gaining access to the target system or
+                    network. You will learn about various techniques, such as exploiting vulnerabilities, brute
+                    forcing, to gain unauthorized access to the target environment.
+                </p>
+            </li>
+        </ol>
+    </div>
+</div>
+{% endblock %}
+

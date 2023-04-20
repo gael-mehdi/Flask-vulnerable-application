@@ -1,35 +1,91 @@
-<!--
+<!-- 
 This file is part of PyFlaSQL.
 Original author: Raphael Viera (raphael.viera@emse.fr)
 License: check the LICENSE file.
 -->
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% block title %}SRIE{% endblock %}
+{% block content %}
+<div class="container p-5 my-5 border">
+    <!-- Main Title -->
+    <h1 class="text-center">Welcome to PyFlaSQL!</h1>
+    <div class="container p-5 my-5 border">
+        <!-- Description -->
+        <p class="lead">
+            PyFlaSQL (Python - Flask - SQLite) is built using a combination of modern web technologies.
+        </p>
+                
+        <p class="lead">
+            PyFlaSQL uses HTML, the standard markup language for creating web pages, along with the popular
+            Bootstrap CSS framework to create a responsive and visually appealing user interface.
+        </p>
+        <p class="lead">
+            On the server-side, PyFlaSQL uses Python, a versatile and powerful programming language, along with Flask, a
+            lightweight web framework, to build the backend logic and handle dynamic content generation. For data
+            storage, PyFlaSQL employs SQLite, a lightweight and serverless relational database management system, to store
+            and manage data efficiently.
+        </p>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PyFlaSQL - Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('blueprint.static', filename='dashboard.css') }}">
-</head>
+    </div>
 
-<body>
-    <h1>PyFlaSQL - Dashboard</h1>
-    <hr>
-    <h2>Hello <span id="username">{{username}}</span></h2>
-    <hr>
-    <ul class="menu-list">
-        <li><a href="{{url_for('blueprint.srie_tp1_recon_footprint')}}">TP1 - Reconnaissance / Footprint</a></li>
-        <li><a href="{{url_for('blueprint.srie_tp2_scanning_networks')}}">TP2 - Scanning Networks</a></li>
-        <li><a href="{{url_for('blueprint.srie_tp3_enumeration')}}">TP3 - Enumeration</a></li>
-        <li><a href="{{url_for('blueprint.srie_tp4_gaining_access')}}">TP4 - Gaining Access</a></li>
-    </ul>
-    <hr>
-    <ul class="menu-list">
-        <li><a href="{{url_for('blueprint.user_profile')}}">User profile</a></li>
-        <li><a href="{{url_for('blueprint.logout')}}">Logout</a></li>
-    </ul>
-</body>
+    <!-- Four steps section -->
+    <h2 class="mt-5 my-5 text-center">The Four Steps in the Penetration Testing Process</h2>
 
-</html>
+    <div class="container p-5 my-5 border">
+        <p class="lead">
+            Through this project, PyFlaSQL aims to demonstrate the seamless integration of HTML, Bootstrap CSS, Python, 
+            Flask, and SQLite, showcasing the capabilities of these technologies in creating modern and functional web
+            applications. I hope you enjoy exploring PyFlaSQL and experiencing the unique features that have been 
+            implemented using this powerful technology stack.
+        </p>
+
+        <p class="lead">
+            Learn more about each technology:
+        </p>
+
+        <ol class="list-group mt-5">
+            <li class="list-group-item">
+                <h5><a href="https://www.w3schools.com/html/" class="list-group-item-action">HTML</a></h5>
+                <p class="lead">
+                    Hypertext Markup Language (HTML) is a standard markup language used for creating web pages. 
+                    It uses tags to structure content, such as headings, paragraphs, images, and links, allowing browsers 
+                    to interpret and display the content.
+                </p>
+            </li>
+            <li class="list-group-item">
+                <h5><a href="https://getbootstrap.com/" class="list-group-item-action">Bootstrap CSS</a></h5>
+                <p class="lead">
+                    Bootstrap CSS is a popular front-end CSS framework that provides a collection of pre-designed User 
+                    Interface (UI) components and responsive grid system for building modern and mobile-first 
+                    web pages easily.
+                </p>
+            </li>
+            <li class="list-group-item">
+                <h5><a href="https://www.python.org/" class="list-group-item-action">Python</a></h5>
+                <p class="lead">
+                    Python is a widely-used, high-level programming language known for its simplicity and readability. 
+                    It has a large ecosystem of libraries and frameworks that make it suitable for a wide range of 
+                    applications, including web development, data analysis, machine learning, and more.
+                </p>
+            </li>
+            <li class="list-group-item">
+                <h5><a href="https://flask.palletsprojects.com/" class="list-group-item-action">Flask</a></h5>
+                <p class="lead">
+                    Flask is a lightweight and flexible web framework for building web applications in Python. It 
+                    provides a simple and intuitive API for handling HTTP requests and responses, making it a popular 
+                    choice for building small to medium-sized web applications.
+                </p>
+            </li>
+            <li class="list-group-item">
+                <h5><a href="https://www.sqlite.org/" class="list-group-item-action">SQLite</a></h5>
+                <p class="lead">
+                    SQLite is a self-contained, serverless, and zero-configuration relational database management system. 
+                    It is a popular choice for embedding databases in applications due to its simplicity, efficiency, and 
+                    small footprint. SQLite is widely used in mobile apps, desktop applications, and other embedded systems.
+                </p>
+            </li>
+        </ol>
+    </div>
+</div>
+{% endblock %}
+

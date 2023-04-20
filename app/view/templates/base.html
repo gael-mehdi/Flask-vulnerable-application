@@ -1,0 +1,84 @@
+<!--
+This file is part of PyFlaSQL.
+Original author: Raphael Viera (raphael.viera@emse.fr)
+License: check the LICENSE file.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyFlaSQL - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('blueprint.static', filename='bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('blueprint.static', filename='sidebar.css') }}">
+</head>
+
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar Menu-->
+        <div class="border-end bg-white" id="sidebar-wrapper">
+            <div class="sidebar-heading border-bottom bg-light">PyFlaSQL</div>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{url_for('blueprint.dashboard')}}">Dashboard</a>
+                <!-- Collapse SRIE -->
+                <a class="list-group-item list-group-item list-group-item-action list-group-item-light p-3" href="#sub_category_1" id="category_1" data-toggle="collapse" data-parent="#sub_category_1">SRIE</a>
+                <div class="collapse list-group-submenu" id="sub_category_1">
+                <a href="{{url_for('blueprint.srie_home')}}" class="list-group-item list-group-item list-group-item-action list-group-item-light" data-parent="" style="padding-left: 50px;">Home</a>
+                <a href="{{url_for('blueprint.srie_tp1_recon_footprint')}}" class="list-group-item list-group-item list-group-item-action list-group-item-light" style="padding-left: 50px;">TP1 - Reconnaissance / Footprint</a>
+                <a href="{{url_for('blueprint.srie_tp2_scanning_networks')}}" class="list-group-item list-group-item list-group-item-action list-group-item-light" style="padding-left: 50px;">TP2 - Scanning Networks</a>
+                <a href="{{url_for('blueprint.srie_tp3_enumeration')}}" class="list-group-item list-group-item list-group-item-action list-group-item-light" style="padding-left: 50px;">TP3 - Enumeration</a>
+                <a href="{{url_for('blueprint.srie_tp4_gaining_access')}}" class="list-group-item list-group-item list-group-item-action list-group-item-light" style="padding-left: 50px;">TP4 - Gaining Access</a>
+                </div>
+                <!-- Collapse Toolbox -->
+                <a class="list-group-item list-group-item list-group-item-action list-group-item-light p-3" href="#sub_category_toolbox" id="category_toolbox" data-toggle="collapse" data-parent="#sub_category_toolbox">Toolbox</a>
+                <div class="collapse list-group-submenu" id="sub_category_toolbox">
+                <a href="{{url_for('blueprint.toolbox_home')}}" class="list-group-item list-group-item list-group-item-action list-group-item-light" data-parent="" style="padding-left: 50px;">Home</a>
+                <a href="{{url_for('blueprint.toolbox_form_example')}}" class="list-group-item list-group-item list-group-item-action list-group-item-light" style="padding-left: 50px;">Basic Form Elements</a>
+                <a href="{{url_for('blueprint.toolbox_form_example')}}" class="list-group-item list-group-item list-group-item-action list-group-item-light" style="padding-left: 50px;">Upload Form</a>
+                </div>
+
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{url_for('blueprint.dashboard')}}">About</a>
+                
+            </div>
+        </div>
+        
+        <!-- Page content wrapper-->
+        <div id="page-content-wrapper">
+            <!-- Top navigation-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                            <li class="nav-item active"><a class="nav-link" href="{{url_for('blueprint.dashboard')}}">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{url_for('blueprint.dashboard')}}">About</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{username}}</a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{url_for('blueprint.user_profile')}}">Profile</a>
+                                    <a class="dropdown-item" href="{{url_for('blueprint.logout')}}">Logout</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#!">Something else here</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Page content-->
+            <div class="container-fluid">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

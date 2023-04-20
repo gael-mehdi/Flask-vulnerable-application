@@ -3,31 +3,68 @@ This file is part of PyFlaSQL.
 Original author: Raphael Viera (raphael.viera@emse.fr)
 License: check the LICENSE file.
 -->
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% block title %}SRIE > TP2 - Scanning Networks{% endblock %}
+{% block content %}
+<div class="container p-5 my-5">
+    <!-- Main Title -->
+    <h1 class="text-center">SRIE > TP2 - Scanning Networks</h2>
+    <div class="container p-5 my-5 border">
+        <!-- Description -->
+        <p class="lead">
+            Description text. Description text. Description text. Description text.
+        </p>
+                
+        <p class="lead">
+            Description text. Description text. Description text. Description text. 
+        </p>
+    </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('blueprint.static', filename='main.css') }}">
-</head>
+    <!-- Useful tools title -->
+    <h2 class="mt-5 text-center">Useful tools used in this phase</h2>    
 
-<body>
-    <h1>PyFlaSQL</h1>
-    <hr>
-    <h2>Hello {{username}}</h2>
-    <hr>
-    <h2>TP2 - Scanning Networks</h2>
-    <h2>Method 1</h2>
-    <a href="#">Method 1</a>
-    <h2>Method 2</h2>
-    <a href="#">Method 2</a>
-    <hr>
-    <a href="{{url_for('blueprint.dashboard')}}">DashBoard</a>
-    <br>
-    <a href="{{url_for('blueprint.logout')}}">Logout</a>
-</body>
+    <div class="container p-5 my-5 border">
+        <p class="lead">
+            Below is a list of tools that can be used for this pentesting phase:
+        </p>
+        
+        <ol class="list-group">
+            <li class="list-group-item">
+                <h5><a href="{{url_for('blueprint.srie_tp2_pingaddr')}}" class="list-group-item-action">Ping an IP address</a></h5>
+                <p class="lead">
+                    Ping can be used during a penetration test to send ICMP Echo Request packets to a target system or 
+                    network, and then analyze the response to gather information about the target. By sending ping requests and 
+                    analyzing the responses, pentesters can determine if a host is online, assess its response time (round-trip time or 
+                    RTT), and identify potential targets for further exploration or exploitation.
+                </p>
+            </li>
+            <li class="list-group-item">
+                <h5><a href="#" class="list-group-item-action">Tool 2</a></h5>
+                <p class="lead">
+                    Description text. Description text. Description text. Description text.
+                </p>
+            </li>
+            <li class="list-group-item">
+                <h5><a href="#" class="list-group-item-action">Tool 3</a></h5>
+                <p class="lead">
+                    Description text. Description text. Description text. Description text.
+                </p>
+            </li>
+            <li class="list-group-item">
+                <h5><a href="#" class="list-group-item-action">Tool 4</a></h5>
+                <p class="lead">
+                    Description text. Description text. Description text. Description text.
+                </p>
+            </li>
+            <li class="list-group-item">
+                <h5><a href="#" class="list-group-item-action">Tool 5</a></h5>
+                <p class="lead">
+                    Description text. Description text. Description text. Description text.
+                </p>
+            </li>
+        </ol>
+    </div>
 
-</html>
+</div>
+{% endblock %}
+

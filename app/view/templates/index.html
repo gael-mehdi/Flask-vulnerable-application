@@ -1,29 +1,61 @@
-<!-- 
-This file is part of PyFlaSQL.
-Original author: Raphael Viera (raphael.viera@emse.fr)
-License: check the LICENSE file.
--->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PyFlaSQL</title>
-    <link rel="stylesheet" href="{{ url_for('blueprint.static', filename='main.css') }}">
-</head>
+    <title>Cover Template for Bootstrap</title>
 
-<body>
-    <div class="container">
-        <h1>PyFlaSQL</h1>
-        <hr>
-        <h2>Framework for Enterprise and Web Security Courses (ISMIN@MSE)</h2>
-        <hr>
-        <a href="{{ url_for('.login') }}">Login Page</a>
-        <br>
-        <a href="{{ url_for('.register') }}">Register Page</a>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/cover/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{{ url_for('blueprint.static', filename='bootstrap.css') }}">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{{ url_for('blueprint.static', filename='index.css') }}">
+  </head>
+
+  <body class="text-center">
+
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">PyFlaSQL</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="#">Home</a>
+            <a class="nav-link" href="{{ url_for('blueprint.login') }}">Login</a>
+            <a class="nav-link" href="https://raphaelviera.fr/contact/">Contact</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        <h1 class="cover-heading">PyFlaSQL</h1>
+        <p class="lead">
+            (Python - Flask - SQLite)
+        </p>
+        <p class="lead">
+            PyFlaSQL uses HTML, the standard markup language for creating web pages, along with the popular
+            Bootstrap CSS framework to create a responsive and visually appealing user interface.
+        </p>
+        <p class="lead">
+            On the server-side, PyFlaSQL uses Python, along with Flask, to build the backend logic and handle dynamic 
+            content generation. To store and manage data efficiently, PyFlaSQL employs SQLite, a lightweight and serverless 
+            relational database management system.
+        </p>
+        <p class="lead">
+          <a href="https://gitlab.emse.fr/raphael.viera/pyflasql" class="btn btn-lg btn-secondary">Learn more</a>
+        </p>
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>by <a href="https://gitlab.emse.fr/raphael.viera/pyflasql">Raphael Viera</a></p>
+        </div>
+      </footer>
     </div>
-</body>
 
+  </body>
 </html>

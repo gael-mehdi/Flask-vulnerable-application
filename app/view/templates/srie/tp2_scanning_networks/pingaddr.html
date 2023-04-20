@@ -1,0 +1,109 @@
+<!-- 
+This file is part of PyFlaSQL.
+Original author: Raphael Viera (raphael.viera@emse.fr)
+License: check the LICENSE file.
+
+The page is an HTML template for a web-based tool called "Ping an IP Address" that allows users to ping an IP address. The page includes the following components:
+
+    Head: Contains meta information such as character encoding, viewport settings, and a title for the page.
+    Body: Contains the main content of the page.
+        Header: Includes the title "PyFlaSQL" and a horizontal line.
+        Heading 2: "Ping an IP address" as the main heading.
+        Heading 3: Displays a preformatted command for using the 'ping' command with placeholders for the number of pings and IP address.
+        Form: Contains a form for submitting the IP address and number of pings to ping.
+            Input fields: Includes two input fields, one for the IP address and one for the number of pings, with placeholders and default values.
+            Submit button: Allows the user to submit the form to ping the specified IP address.
+        Heading 2: "Help" as a subheading.
+        Paragraph: Provides information on how to use the tool, including placeholders for the IP address and number of pings.
+        Heading 2: "Command output" as a subheading.
+        Preformatted text: Displays the output of the 'ping' command, which is dynamically generated and inserted into the page.
+        Horizontal line.
+        Links: Includes two links to go back to the dashboard and logout from the current session.
+
+{% raw %}
+Note: The page also contains Flask-specific template syntax, denoted by double curly braces {{ }} and {% %}, for rendering dynamic content using Flask, a Python web framework.
+Anything in this block is treated as raw text, including {{ curly braces }} and {% other block-like syntax %}
+{% endraw %}
+-->
+{% extends "base.html" %}
+{% block title %}SRIE > TP2 - Scanning Networks > Ping an IP address{% endblock %}
+{% block content %}
+<div class="container p-5 my-5">
+    <h2 class="text-center">SRIE > TP2 - Scanning Networks > Ping an IP address</h2>
+
+    <div class="container p-5 my-5 border bg-light">
+        <p class="lead">
+            Ping can be used during a penetration test to send ICMP Echo Request packets to a target system or 
+            network, and then analyze the response to gather information about the target. 
+            By sending ping requests and analyzing the responses, pentesters can determine if a host is online, 
+            assess its response time (round-trip time or RTT), and identify potential targets for further 
+            exploration or exploitation. 
+        </p>
+    </div>
+
+    <!-- Command Used section -->
+    <h3 class="mt-5 text-center">Command Used</h3>
+
+    <div class="container p-5 my-5 border bg-light">
+        <p class="lead">The "ping" tool is used in the command line shell. So far it takes two parameters:</p>
+        <code>{% raw %}$ ping -c {npings} {ip_address}{% endraw %}</code>
+    </div>
+
+    <!-- Help section -->
+    <h3 class="mt-5 text-center">Help</h3>
+
+    <div class="container p-5 my-5 border bg-light">
+        <p class="lead">Please refer to the following information for help on how to use this tool:</p>
+        <ul>
+            <li class="list-group-item">
+                <h5>{ip_address}*</h5>
+                <p>The IP address to ping</p>
+            </li>
+            <li class="list-group-item">
+                <h5>{npings}</h5>
+                <p>The number of times ping is run.</p>
+            </li>
+        </ul>
+        <p>Fields marked with * are mandatory.</p>
+
+
+        <h5>Command example:</h5>
+        <code>{% raw %}$ ping -c 5 127.0.0.1{% endraw %}</code>
+    </div>
+
+    <!-- Command Execution section -->
+    <h3 class="mt-5 text-center">Command Execution</h3>
+
+    <div class="container p-5 my-5 border bg-light">
+        <form method="post" action="">
+            {{ content["form"].csrf_token }}
+
+            <div class="form-group mt-2">
+                <label for="{{ content['form'].ip_address.id }}">{{ content["form"].ip_address.label.text }}</label>
+                {{ content["form"].ip_address(class="form-control") }}
+            </div>
+
+            <div class="form-group mt-2">
+                <label for="{{ content['form'].npings.id }}">{{ content["form"].npings.label.text }}</label>
+                {{ content["form"].npings(class="form-control") }}
+            </div>
+            
+            <button type="submit" class="btn btn-primary mt-2">Submit</button>
+        </form> 
+    </div>
+
+    <!-- Command Output section -->
+    <h3 class="mt-5 text-center">Command Output</h3>
+
+    <div class="container p-5 my-5 border bg-light">
+        <h5 class="mt-5">Command executed:</h5>
+        <code>{{ content["command_executed"] }}</code>
+
+        <h5 class="mt-5">Output from shell:</h5>
+            <pre>{{ content["command_output"] }}</pre>
+    </div>
+
+    
+</div>
+{% endblock %}
+

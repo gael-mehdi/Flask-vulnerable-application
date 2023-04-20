@@ -3,28 +3,87 @@ This file is part of PyFlaSQL.
 Original author: Raphael Viera (raphael.viera@emse.fr)
 License: check the LICENSE file.
 -->
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% block title %}SRIE > TP1 - Reconnaissance / Footprint > IP address{% endblock %}
+{% block content %}
+<div class="container p-5 my-5">
+    <h2 class="text-center">SRIE > TP1 - Reconnaissance / Footprint > IP address</h2>
+    <div class="container p-5 my-5 border bg-light">
+        <p class="lead">
+            The key to successfully exploiting or infiltrating a remote system lies in gathering information. 
+            The initial step in the penetration testing is reconnaissance, which involves using tools to retrieve information 
+            from the target system. 
+        </p>
+    </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IP Address</title>
-    <link rel="stylesheet" href="{{ url_for('blueprint.static', filename='main.css') }}">
-</head>
+    <!-- Command Used section -->
+    <h3 class="mt-5 text-center">Command Used</h3>
 
-<body>
-    <h1>PyFlaSQL</h1>
-    <hr>
-    <h2>IP address</h2>
-    <h3>Private: {{content["ip_address_private"]}}</h3>
-    <h3>Public: To be implemented</h3>
+    <div class="container p-5 my-5 border bg-light">
+        <p class="lead">The "IP adderss" tool is used in the command line shell. It takes no parameters:</p>
+        <ul>
+            <li class="list-group-item">
+                <h5>Get the private IP address:</h5>
+                <code class="p-5">{% raw %}$ hostname -I{% endraw %}</code>
+            </li>
+            <li class="list-group-item">
+                <h5>Get the public IP address:</h5>
+                <code class="p-5">{% raw %}$ dig TXT +short o-o.myaddr.l.google.com @ns1.google.com{% endraw %}</code>
+            </li>
+        </ul>
+    </div>
 
-    <hr>
-    <a href="{{url_for('blueprint.dashboard')}}">Back to Dashboard</a>
-    <br>
-    <a href="{{url_for('blueprint.logout')}}">Press here to logout</a>
-</body>
+    <!-- Help section -->
+    <h3 class="mt-5 text-center">Help</h3>
 
-</html>
+    <div class="container p-5 my-5 border bg-light">
+        <p class="lead">
+            Simply copy/paste the above commands in a linux shell. 
+            There are no additional parameters required for this tool.
+        </p>
+    </div>
+
+    <!-- Command Execution section -->
+    <h3 class="mt-5 text-center">Command Execution</h3>
+    <div class="container p-5 my-5 border bg-light">
+        <p class="lead">
+            The command is automatically executed when this page is loaded. Please check the results below.
+        </p>
+    </div>
+    
+
+    <!-- Command Output section -->
+    <h3 class="mt-5 text-center">Command Output</h3>
+
+    <div class="container p-5 my-5 border bg-light">
+        <h4 class="mt-5">Command executed:</h4>
+        <ul>
+            <li class="list-group-item">
+                <h5>Get the private IP address:</h5>
+                <code class="p-5">{% raw %}{{ content["cmd_ip_address_private"] }}{% endraw %}</code>
+            </li>
+            <li class="list-group-item">
+                <h5>Get the public IP address:</h5>
+                <code class="p-5">{% raw %}{{ content["cmd_ip_address_public"] }}{% endraw %}</code>
+            </li>
+        </ul>
+        <h4 class="mt-5">Output from shell:</h4>
+        <ul>
+            <li class="list-group-item">
+                <h5>Private IP address:</h5>
+                <pre>{{content["ip_address_private"]}}</pre>
+            </li>
+            <li class="list-group-item">
+                <h5>Public IP address:</h5>
+                <pre>{{content["ip_address_public"]}}</pre>
+            </li>
+        </ul>
+    </div>
+
+    
+</div>
+{% endblock %}
+
+
+
+
