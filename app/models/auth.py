@@ -9,7 +9,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import DataRequired, Email, InputRequired, Length, ValidationError
 
-from .sql import db, User
+from .sql import db, UserDB
 
 
 class RegisterForm(FlaskForm):
@@ -41,7 +41,7 @@ class RegisterForm(FlaskForm):
         Raises:
             - ValidationError: if the username already exists in the database.
         """
-        existing_user_username = User.query.filter_by(username=username.data).first()
+        existing_user_username = UserDB.query.filter_by(username=username.data).first()
         if existing_user_username:
             raise ValidationError('That username already exists. Please choose a different one.')
 
@@ -61,5 +61,7 @@ class LoginForm(FlaskForm):
 
     password = PasswordField(validators=[
         InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
+    
+    remember_me = BooleanField('Remember me', render_kw={"placeholder": "Remember me"})
 
     submit = SubmitField('Login')

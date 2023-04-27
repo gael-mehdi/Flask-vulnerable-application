@@ -1,9 +1,12 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileAllowed, FileRequired
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField, SelectField, TextAreaField, RadioField
 from wtforms.validators import DataRequired, Email, InputRequired, Length, ValidationError, NumberRange, URL, EqualTo
 from wtforms.fields import DateField
+from ..sql import db, UserDB
 
-class ToolboxFormExample(FlaskForm):
+
+class ToolboxUserRegForm(FlaskForm):
     name = StringField('Name', validators=[
         InputRequired(), Length(min=2, max=50)], render_kw={"placeholder": "Name"})
     
@@ -30,5 +33,28 @@ class ToolboxFormExample(FlaskForm):
 
     date = DateField('Date', validators=[
         InputRequired()], format='%Y-%m-%d', render_kw={"placeholder": "Date"})
+    
+    submit = SubmitField('Submit')
+
+
+class ToolboxUploadForm(FlaskForm):
+    image = FileField('Image', validators=[
+        InputRequired(), 
+        FileAllowed(['jpg', 'jpeg', 'png', 'gif'], 'Only JPEG, PNG, and GIF images are allowed.')])
+    submit = SubmitField('Upload')
+
+
+class ToolboxBookLibrary(FlaskForm):
+    title = StringField('Book Title', validators=[
+        InputRequired(), Length(min=2, max=200)], render_kw={"placeholder": "Title"})
+    
+    author = StringField('Author', validators=[
+        InputRequired(), Length(min=2, max=200)], render_kw={"placeholder": "Author"})
+    
+    cover = FileField('Cover', validators=[
+        FileAllowed(['jpg', 'jpeg', 'png', 'gif'], 'Only JPEG, PNG, and GIF images are allowed.')])
+    
+    description = TextAreaField('Description', validators=[
+        Length(max=500)], render_kw={"placeholder": "Description"})
     
     submit = SubmitField('Submit')

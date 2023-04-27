@@ -6,12 +6,16 @@
 Implement reusable functions
 """
 import subprocess as sp
+import os
 
 def get_shell_output(call_string):
     output = sp.getoutput(call_string)
     return output
 
 
+def get_current_directory():
+    # get the current working directory
+    return os.getcwd()
 
 class CheckIf:
     """

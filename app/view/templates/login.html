@@ -12,7 +12,7 @@ License: check the LICENSE file.
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <!-- Link Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ url_for('blueprint.static', filename='bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('blueprint.static', filename='css/bootstrap.min.css') }}">
 </head>
 
 <body class="bg-light">
@@ -21,20 +21,39 @@ License: check the LICENSE file.
             <div class="col-md-6 col-lg-4">
                 <h1 class="text-center mb-4">PyFlaSQL</h1>
                 <hr>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class=text-center mb-4>
+                    {% for category, message in messages %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ category }}: {{ message }}
+                    </div>
+                    {% endfor %}
+                    </div>
+                {% endif %}
+                {% endwith %}
+
                 <h3 class="text-center mb-4">Login Page</h3>
 
                 <form method="POST" action="">
                     <!-- Add Bootstrap form classes -->
-                    <div class="form-group">
+                    <div class="form-group mt-2">
                         {{ form.hidden_tag() }}
                         {{ form.username.label(class="form-label") }}
                         {{ form.username(class="form-control") }}
                     </div>
-                    <div class="form-group">
+
+                    <div class="form-group mt-2">
                         {{ form.password.label(class="form-label") }}
                         {{ form.password(class="form-control") }}
                     </div>
-                    <div class="form-group text-center">
+
+                    <div class="form-group form-check mt-2">
+                        {{ form.remember_me(class="form-check-input") }}
+                        <label class="form-check-label" for="{{ form.remember_me.id }}">{{ form.remember_me.label.text }}</label>
+                    </div>
+
+                    <div class="form-group text-center mt-2">
                         {{ form.submit(class="btn btn-primary") }}
                     </div>
                 </form>

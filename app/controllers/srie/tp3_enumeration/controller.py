@@ -9,7 +9,7 @@ from flask import Flask, render_template, url_for, redirect
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from flask_sqlalchemy import SQLAlchemy
 # from flask_migrate import Migrate
-from ....models.sql import db, User
+from ....models.sql import db, UserDB
 from ...utils import get_shell_output
 from ....models.srie.tp1_recon_footprint.forms import PingAddrForm
 

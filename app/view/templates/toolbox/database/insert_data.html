@@ -1,0 +1,105 @@
+<!-- 
+This file is part of PyFlaSQL.
+Original author: Raphael Viera (raphael.viera@emse.fr)
+License: check the LICENSE file.
+-->
+{% extends "base.html" %}
+{% block title %}Toolbox > Database SQLite > Insert, query and delete data from database{% endblock %}
+{% block content %}
+<div class="container p-5 my-5">
+    <!-- Main Title -->
+    <h1 class="text-center">Toolbox > Database SQLite > Insert, query and delete data</h1>
+    <div class="container p-5 my-5 border bg-light">
+        <!-- Description -->
+        <p class="lead">
+            Illustrates how to utilize SQLite (insert, query and delete data) and WTForms library to generate a 
+            basic book listing application as an example.
+        </p>
+
+    </div>
+
+    <!-- Four steps section -->
+    <h2 class="mt-5 my-5 text-center">Example: Book Listing</h2>
+
+    <div class="container p-5 my-5 border bg-light">
+        <p class="lead">
+            Please complete the User Profile Form by filling in the required information below:
+        </p>
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ content["form"].csrf_token }}
+
+            <div class="form-group mt-2">
+                <label for="{{ content['form'].title.id }}">{{ content["form"].title.label.text }}</label>
+                {{ content["form"].title(class="form-control") }}
+                {% for error in content["form"].title.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+
+            <div class="form-group mt-2">
+                <label for="{{ content['form'].author.id }}">{{ content["form"].author.label.text }}</label>
+                {{ content["form"].author(class="form-control") }}
+                {% for error in content["form"].author.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+
+            <div class="form-group mt-2">
+                <label for="{{ content['form'].description.id }}">{{ content["form"].description.label.text }}</label>
+                {{ content["form"].description(class="form-control") }}
+                {% for error in content["form"].description.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ content['form'].cover.id }}">{{ content['form'].cover.label.text }}</label>
+                {{ content["form"].cover(class="form-control-file", accept=".jpg, .jpeg, .png, .gif") }}
+                {% for error in content["form"].cover.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+            
+            <button type="submit" class="btn btn-primary mt-2">Submit</button>
+        </form>
+        
+    </div>
+
+    <!-- Four steps section -->
+    <h2 class="mt-5 my-5 text-center">Form Output</h2>
+
+    <div class="container p-5 my-5 border bg-light">
+        <p class="lead">
+            When the "Submit" button is clicked, the form content will be sent to Python through Flask, and then the 
+            processed data will be sent back to HTML for further display or processing.
+        </p>
+    
+        <h4>Book Library</h4>
+        {% if content["read_data"]["books"] %}
+        <div class="container p-5 border">
+            {% for book in content["read_data"]["books"] %}
+            <div class="row p-1 mt-2 border">
+              <div class="col-2">
+                <img src="{{ content['read_data']['covers_url'] + book.cover }}" class="img-fluid">
+              </div>
+              <div class="col-5">
+                <p class="lead"><b>Book ID</b>: {{ book.id }}</p>
+                <p class="lead"><b>Title</b>: {{ book.title }}</p>
+                <p class="lead"><b>Author</b>: {{ book.author }}</p>
+                <p class="lead"><b>Description</b>: {{ book.description }}</p>
+                <form method="post" action="{{ url_for('blueprint.toolbox_database_insert_data') }}" style="display: inline;">
+                    <input type="hidden" name="remove" value="{{ book.id }}">
+                    <button type="submit" class="btn btn-danger btn-sm active">Remove</button>
+                </form>
+            </div>
+            </div>
+            {% endfor %}
+          </div>
+          {% else %}
+            <div class="container p-5 border">
+            <p class="lead text">Waiting to insert books in the database.</p>
+            </div>
+          {% endif %}
+</div>
+{% endblock %}
+

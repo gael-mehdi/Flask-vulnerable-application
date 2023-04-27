@@ -11,8 +11,9 @@ License: check the LICENSE file.
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PyFlaSQL - {% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('blueprint.static', filename='bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ url_for('blueprint.static', filename='sidebar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('blueprint.static', filename='css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('blueprint.static', filename='css/sidebar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('blueprint.static', filename='css/forms.css') }}">
 </head>
 
 <body>
@@ -35,11 +36,11 @@ License: check the LICENSE file.
                 <a class="list-group-item list-group-item list-group-item-action list-group-item-light p-3" href="#sub_category_toolbox" id="category_toolbox" data-toggle="collapse" data-parent="#sub_category_toolbox">Toolbox</a>
                 <div class="collapse list-group-submenu" id="sub_category_toolbox">
                 <a href="{{url_for('blueprint.toolbox_home')}}" class="list-group-item list-group-item list-group-item-action list-group-item-light" data-parent="" style="padding-left: 50px;">Home</a>
-                <a href="{{url_for('blueprint.toolbox_form_example')}}" class="list-group-item list-group-item list-group-item-action list-group-item-light" style="padding-left: 50px;">Basic Form Elements</a>
-                <a href="{{url_for('blueprint.toolbox_form_example')}}" class="list-group-item list-group-item list-group-item-action list-group-item-light" style="padding-left: 50px;">Upload Form</a>
+                <a href="{{url_for('blueprint.toolbox_wtforms_home')}}" class="list-group-item list-group-item list-group-item-action list-group-item-light" style="padding-left: 50px;">WTForms</a>
+                <a href="{{url_for('blueprint.toolbox_database_home')}}" class="list-group-item list-group-item list-group-item-action list-group-item-light" style="padding-left: 50px;">Database SQLite</a>
                 </div>
 
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{url_for('blueprint.dashboard')}}">About</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{url_for('blueprint.about')}}">About</a>
                 
             </div>
         </div>
@@ -52,14 +53,13 @@ License: check the LICENSE file.
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                             <li class="nav-item active"><a class="nav-link" href="{{url_for('blueprint.dashboard')}}">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{url_for('blueprint.dashboard')}}">About</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{url_for('blueprint.about')}}">About</a></li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{username}}</a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{url_for('blueprint.user_profile')}}">Profile</a>
-                                    <a class="dropdown-item" href="{{url_for('blueprint.logout')}}">Logout</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#!">Something else here</a>
+                                    <a class="dropdown-item" href="{{url_for('blueprint.logout')}}">Logout</a>
                                 </div>
                             </li>
                         </ul>
@@ -68,6 +68,27 @@ License: check the LICENSE file.
             </nav>
             <!-- Page content-->
             <div class="container-fluid">
+                <!-- Alert messages (flashes) -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class=text-center mb-4>
+                    {% for category, message in messages %}
+                    {% if category.lower() == "success" %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {% elif category.lower() == "error" %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {% endif %}
+                <strong>{{ category }}:</strong> {{ message }}
+                        <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                    </div>
+                {% endif %}
+                {% endwith %}
+
+                <!-- Content added by the user -->
                 {% block content %}
                 {% endblock %}
             </div>

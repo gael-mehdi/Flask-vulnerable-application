@@ -1,0 +1,68 @@
+<!-- 
+This file is part of PyFlaSQL.
+Original author: Raphael Viera (raphael.viera@emse.fr)
+License: check the LICENSE file.
+-->
+{% extends "base.html" %}
+{% block title %}Toolbox > Upload Form{% endblock %}
+{% block content %}
+<div class="container p-5 my-5">
+    <!-- Main Title -->
+    <h1 class="text-center">Toolbox > WTForms > Image Upload</h1>
+    <div class="container p-5 my-5 border bg-light">
+        <!-- Description -->
+        <p class="lead">
+            Demonstrates how to use the fundamental form components provided by the WTForms library to enable 
+            file uploads, specifically for images in this example. 
+            However, it can also be easily adapted to accommodate other types of files.
+        </p>
+
+    </div>
+
+    <!-- Four steps section -->
+    <h2 class="mt-5 my-5 text-center">Example: Image Upload Form</h2>
+
+    <div class="container p-5 my-5 border bg-light">
+        <p class="lead">
+            Please select an image to upload:
+        </p>
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ content['form'].csrf_token }}
+            <div class="form-group">
+                <label for="{{ content['form'].image.id }}">{{ content['form'].image.label.text }}</label>
+                {{ content["form"].image(class="form-control-file", accept=".jpg, .jpeg, .png, .gif") }}
+                {% for error in content["form"].image.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Submit</button>
+        </form>
+        
+        
+    </div>
+
+    <!-- Output section -->
+    <h2 class="mt-5 my-5 text-center">Output</h2>
+
+    <div class="container p-5 my-5 border bg-light">
+        <p class="lead">
+            When the "Submit" button is clicked, the form content will be sent to Python through Flask, and then the 
+            processed data will be sent back to HTML for further display or processing.
+        </p>
+
+        <h4>Response</h4>
+        {% if content["confirm"]%}
+            <div class="container p-5 my-5 border">
+            <p class="lead">File path: {{ content['file_path'] }}</p>
+            <p class="lead">File URL: {{ content['file_url'] }}</p>
+            <p><img src="{{ content['file_url'] }}" class="img-fluid"></p>
+            </div>
+        {% else %}
+            <div class="container p-5 border">
+            <p class="lead text">Waiting to upload image file ...</p>
+            </div>
+        {% endif %}
+            
+</div>
+{% endblock %}
+

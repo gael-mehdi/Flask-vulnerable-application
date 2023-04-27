@@ -4,11 +4,11 @@ Original author: Raphael Viera (raphael.viera@emse.fr)
 License: check the LICENSE file.
 -->
 {% extends "base.html" %}
-{% block title %}Toolbox{% endblock %}
+{% block title %}Toolbox > WTForms{% endblock %}
 {% block content %}
 <div class="container p-5 my-5">
     <!-- Main Title -->
-    <h1 class="text-center">Toolbox</h1>
+    <h1 class="text-center">Toolbox > WTForms</h1>
     <div class="container p-5 my-5 border">
         <!-- Description -->
         <p class="lead">
@@ -28,16 +28,15 @@ License: check the LICENSE file.
         </p>
         <ol class="list-group mt-5">
             <li class="list-group-item">
-                <h5><a href="{{url_for('blueprint.toolbox_wtforms_home')}}" class="list-group-item-action">WTForms</a></h5>
-                <p class="lead">Implements some of the basic elements that can be used in WTForms to build web forms in Python web 
-                    applications. WTForms is a powerful and flexible library that provides many other advanced features for 
-                    building robust and secure forms.
+                <h5><a href="{{url_for('blueprint.toolbox_wtforms_user_reg_form')}}" class="list-group-item-action">User Registration Form</a></h5>
+                <p class="lead">Demonstrates how to use the fundamental form components from the WTForms library to 
+                    create a robust user account creation feature.
                 </p>
             </li>
             <li class="list-group-item">
-                <h5><a href="#" class="list-group-item-action">Tool 2</a></h5>
-                <p class="lead">
-                    To be implemented
+                <h5><a href="{{url_for('blueprint.toolbox_wtforms_upload_form')}}" class="list-group-item-action">Upload Form</a></h5>
+                <p class="lead">Demonstrates how to use the fundamental form components from the WTForms library to 
+                    create aa upload form.
                 </p>
             </li>
             <li class="list-group-item">

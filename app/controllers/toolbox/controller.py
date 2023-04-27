@@ -9,9 +9,9 @@ from flask import Flask, render_template, url_for, redirect, request
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from flask_sqlalchemy import SQLAlchemy
 # from flask_migrate import Migrate
-from ...models.sql import db, User
+from ...models.sql import db, UserDB
 from ..utils import get_shell_output, CheckIf
-from ...models.toolbox.forms import ToolboxFormExample
+from ...models.toolbox.forms import ToolboxUserRegForm
 
 
 @login_required
@@ -36,7 +36,7 @@ def toolbox_home():
     return render_template(url_for('blueprint.toolbox_home')+'.html', username=username)
 
 def toolbox_form_example():
-    content = {"form": ToolboxFormExample(),
+    content = {"form": ToolboxUserRegForm(),
                "read_data": "Waiting..."
                }
     if content["form"].validate_on_submit():
@@ -65,6 +65,5 @@ def toolbox_form_example():
         content["read_data"] += f"Date: {date}\n"
         content["read_data"] += f"Option: {option}"
         
-        # Redirect to success page or do other logic
-        return render_template(url_for('blueprint.toolbox_form_example')+'.html', content=content)
+    # Redirect to success page or do other logic
     return render_template(url_for('blueprint.toolbox_form_example')+'.html', content=content)

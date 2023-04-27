@@ -4,11 +4,11 @@ Original author: Raphael Viera (raphael.viera@emse.fr)
 License: check the LICENSE file.
 -->
 {% extends "base.html" %}
-{% block title %}Toolbox{% endblock %}
+{% block title %}Toolbox > WTForms{% endblock %}
 {% block content %}
 <div class="container p-5 my-5">
     <!-- Main Title -->
-    <h1 class="text-center">Toolbox</h1>
+    <h1 class="text-center">Toolbox > Database</h1>
     <div class="container p-5 my-5 border">
         <!-- Description -->
         <p class="lead">
@@ -28,10 +28,9 @@ License: check the LICENSE file.
         </p>
         <ol class="list-group mt-5">
             <li class="list-group-item">
-                <h5><a href="{{url_for('blueprint.toolbox_wtforms_home')}}" class="list-group-item-action">WTForms</a></h5>
-                <p class="lead">Implements some of the basic elements that can be used in WTForms to build web forms in Python web 
-                    applications. WTForms is a powerful and flexible library that provides many other advanced features for 
-                    building robust and secure forms.
+                <h5><a href="{{url_for('blueprint.toolbox_database_insert_data')}}" class="list-group-item-action">Insert, query and delete data from Database</a></h5>
+                <p class="lead">Illustrates how to utilize SQLite (insert, query and delete data) and WTForms library to generate a 
+                    basic book listing application as an example.
                 </p>
             </li>
             <li class="list-group-item">

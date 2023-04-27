@@ -5,12 +5,12 @@
 """
 Business logic for the main application
 """
-from flask import Flask, render_template, url_for, redirect
+from flask import Flask, render_template, url_for, redirect, flash
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from flask_bcrypt import Bcrypt
 
 from ..models.app import PyFlaSQL
-from ..models.sql import db, User
+from ..models.sql import db, UserDB
 from ..models.auth import LoginForm, RegisterForm
 
 def get_bcrypt():
@@ -44,11 +44,13 @@ def login():
     bcrypt = get_bcrypt()
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
+        user = UserDB.query.filter_by(username=form.username.data).first()
+        remember_me = True if form.remember_me.data else False
         if user:
             if bcrypt.check_password_hash(user.password, form.password.data):
-                login_user(user)
+                login_user(user, remember=remember_me)
                 return redirect(url_for('blueprint.dashboard'))
+        flash('Login or password incorrect!', 'Error')
     return render_template('login.html', form=form)
 
 @login_required
@@ -65,6 +67,21 @@ def dashboard():
         """
     username = current_user.username
     return render_template('dashboard.html', username=username)
+
+@login_required
+def about():
+    """
+        Handles the logic for /dashboard page
+        Login is required to view this page.
+
+        Args:
+            - None.
+
+        Returns:
+            - rendered dashboard.html template
+        """
+    username = current_user.username
+    return render_template('about.html', username=username)
 
 @login_required
 def logout():
@@ -96,8 +113,7 @@ def register():
 
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data)
-        new_user = User(username=form.username.data, password=hashed_password)
-        # new_user = User(username=form.username.data, password=form.password.data)
+        new_user = UserDB(username=form.username.data, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('blueprint.login'))
