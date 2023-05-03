@@ -15,12 +15,11 @@ class PyFlaSQL():
     def __init__(self):
         self.myapp = self.create_app("config")  # Creating the app
 
-        # @self.myapp.before_first_request
-        def create_tables():
+        with self.myapp.app_context():
             db.create_all()
 
         # debug - print the URL map of blueprint (check the console)
-        print(self.myapp.url_map)
+        # print(self.myapp.url_map)
 
         self.login_manager = LoginManager()
         self.login_manager.init_app(self.myapp)
