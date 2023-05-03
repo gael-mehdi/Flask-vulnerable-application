@@ -66,7 +66,7 @@ def srie_tp1_ipaddr():
                }
     # Uses get_shell_output() to execute a command in the shell and store the output in the dict.
     content["ip_address_private"] = get_shell_output(content["cmd_ip_address_private"])
-    content["ip_address_public"] = "To be implemented"
+    content["ip_address_public"]  = get_shell_output(content["cmd_ip_address_public"])
     return render_template(url_for('blueprint.srie_tp1_ipaddr')+'.html', content=content)
 
 
