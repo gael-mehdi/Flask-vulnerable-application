@@ -23,7 +23,7 @@ class PyFlaSQL():
 
         self.login_manager = LoginManager()
         self.login_manager.init_app(self.myapp)
-        self.login_manager.login_view = 'login'
+        self.login_manager.login_view = 'blueprint.login'
 
         @self.login_manager.user_loader
         def load_user(user_id):

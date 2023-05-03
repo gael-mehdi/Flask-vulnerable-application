@@ -11,7 +11,6 @@ from flask_sqlalchemy import SQLAlchemy
 # from flask_migrate import Migrate
 from ....models.sql import db, UserDB
 from ...utils import get_shell_output
-from ....models.srie.tp1_recon_footprint.forms import PingAddrForm
 
 
 @login_required

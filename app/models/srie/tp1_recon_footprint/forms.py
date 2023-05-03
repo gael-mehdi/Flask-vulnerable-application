@@ -9,15 +9,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField
 from wtforms.validators import DataRequired, Email, InputRequired, Length, ValidationError, NumberRange
 
-class PingAddrForm(FlaskForm):
-    ip_address = StringField(validators=[
-        InputRequired(), Length(min=2, max=50)], render_kw={"placeholder": "IP Address"})
-
-    # npings = StringField(validators=[
-    #     Length(min=0, max=3)], render_kw={"placeholder": "Number of pings"}, default="3")
+class WhoisForm(FlaskForm):
+    domain = StringField(validators=[
+        InputRequired(), Length(min=2, max=300)], render_kw={"placeholder": "Domain"})
     
-    npings = IntegerField(validators=[
-        NumberRange(min=1, max=100)], render_kw={"placeholder": "Number of pings"}, default=3)
-    
-    
-    submit = SubmitField('Ping')
+    submit = SubmitField('Submit')
