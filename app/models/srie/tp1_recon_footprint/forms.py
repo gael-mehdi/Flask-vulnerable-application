@@ -9,8 +9,4 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField
 from wtforms.validators import DataRequired, Email, InputRequired, Length, ValidationError, NumberRange
 
-class WhoisForm(FlaskForm):
-    domain = StringField(validators=[
-        InputRequired(), Length(min=2, max=300)], render_kw={"placeholder": "Domain"})
-    
-    submit = SubmitField('Submit')
+# To be implemented
