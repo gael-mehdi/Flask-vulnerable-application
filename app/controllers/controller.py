@@ -113,9 +113,10 @@ def register():
 
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data)
-        new_user = UserDB(username=form.username.data, password=hashed_password)
+        new_user = UserDB(username=form.username.data, password=hashed_password, role=999)
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('blueprint.login'))
+    
 
     return render_template('register.html', form=form)

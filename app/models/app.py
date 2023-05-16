@@ -7,6 +7,7 @@ Business logic for the main application
 """
 from flask import Flask, render_template, url_for, redirect
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
+from flask_bcrypt import Bcrypt
 
 from .sql import db, UserDB
 
@@ -17,6 +18,14 @@ class PyFlaSQL():
 
         with self.myapp.app_context():
             db.create_all()
+            bcrypt = Bcrypt(self.myapp)
+
+            user = UserDB.query.filter_by(username="admin").first()
+            if user is None:
+                hashed_password = bcrypt.generate_password_hash("admin123")
+                new_user = UserDB(username="admin", password=hashed_password, role=666)
+                db.session.add(new_user)
+                db.session.commit()
 
         # debug - print the URL map of blueprint (check the console)
         # print(self.myapp.url_map)

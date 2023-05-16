@@ -7,7 +7,7 @@ This file is used to configure the base dir and the database path.
 import os
 
 # Each Flask web application contains a secret key which used to sign session cookies for protection against cookie data tampering.
-SECRET_KEY = os.urandom(32)
+SECRET_KEY = "supersecret" # os.urandom(32)
 
 # Grabs the folder where the script runs.
 # <user_path>/srie/repos/pyflasql
