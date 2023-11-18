@@ -5,7 +5,7 @@
 """
 Business logic for the main application
 """
-from flask import Flask, render_template, url_for, redirect, flash
+from flask import Flask, render_template, render_template_string, url_for, redirect, flash, request
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from flask_bcrypt import Bcrypt
 
@@ -120,3 +120,16 @@ def register():
     
 
     return render_template('register.html', form=form)
+
+def hello():
+    if request.args.get('name'):
+        name = request.args.get('name')
+        template = f'''<div>
+        <h1>Hello</h1>
+        {name}
+</div>
+'''
+        import logging
+        logging.basicConfig(filename="restapi.log", filemode='w', level=logging.DEBUG)
+        logging.debug(str(template))
+        return render_template_string(template)

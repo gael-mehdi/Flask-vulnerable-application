@@ -6,7 +6,7 @@
 Configures the address paths (URL routes)
 """
 from flask import Blueprint
-from ...controllers.controller import index, login, register, dashboard, logout, about
+from ...controllers.controller import index, login, register, dashboard, logout, about, hello
 from ...controllers.srie.tp1_recon_footprint.controller import srie_home, srie_tp1_recon_footprint, srie_tp1_ipaddr, srie_tp1_whois
 from ...controllers.srie.tp2_scanning_networks.controller import srie_tp2_scanning_networks, srie_tp2_pingaddr
 from ...controllers.srie.tp3_enumeration.controller import srie_tp3_enumeration
@@ -25,6 +25,7 @@ blueprint.route('/register', methods=['GET', 'POST'])(register)
 blueprint.route('/dashboard', methods=['GET', 'POST'])(dashboard)
 blueprint.route('/about', methods=['GET', 'POST'])(about)
 blueprint.route('/logout', methods=['GET', 'POST'])(logout)
+blueprint.route('/hello', methods=['GET', 'POST'])(hello)
 
 # User Profile
 blueprint.route('/user_profile/user_profile', methods=['GET', 'POST'])(user_profile)
