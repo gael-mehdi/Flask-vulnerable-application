@@ -133,3 +133,24 @@ def hello():
         logging.basicConfig(filename="restapi.log", filemode='w', level=logging.DEBUG)
         logging.debug(str(template))
         return render_template_string(template)
+    
+def upload():
+   import os
+   if request.method == 'POST':
+      f = request.files['file']
+      filename=secure_filename(f.filename)
+      f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      return 'File uploaded successfully'
+   else:
+      return '''
+<html>
+   <body>
+      <form  method = "POST"  enctype = "multipart/form-data">
+         <input type = "file" name = "file" />
+         <input type = "submit"/>
+      </form>   
+   </body>
+</html>
+
+
+      '''
