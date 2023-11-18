@@ -13,6 +13,11 @@ from ..models.app import PyFlaSQL
 from ..models.sql import db, UserDB
 from ..models.auth import LoginForm, RegisterForm
 
+# Initialisez Flask
+app = Flask(__name__)
+app.config['UPLOAD_FOLDER']="/home/kali/Desktop/upload"
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1000 * 1000
+
 def get_bcrypt():
     pyflasql_obj = PyFlaSQL()
     bcrypt = Bcrypt(pyflasql_obj.myapp)
@@ -136,6 +141,7 @@ def hello():
     
 def upload():
    import os
+   from werkzeug.utils import secure_filename
    if request.method == 'POST':
       f = request.files['file']
       filename=secure_filename(f.filename)
