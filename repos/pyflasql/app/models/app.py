@@ -42,7 +42,7 @@ class PyFlaSQL():
         app = Flask(__name__)
         app.config.from_object(config_path)  # Configuring from Python Files
         app.config['UPLOAD_FOLDER'] = 'uploads'
-        app.config['ALLOWED_EXTENSIONS'] = {'jpg', 'jpeg', 'png', 'gif'}
+        app.config['ALLOWED_EXTENSIONS'] = []
         
         db.init_app(app)
         from ..view.routes.blueprint import blueprint
