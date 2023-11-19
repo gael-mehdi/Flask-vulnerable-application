@@ -8,6 +8,7 @@ Business logic for the main application
 from flask import Flask, render_template, render_template_string, url_for, redirect, flash, request
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from flask_bcrypt import Bcrypt
+from sqlalchemy import text
 
 from ..models.app import PyFlaSQL
 from ..models.sql import db, UserDB
@@ -32,25 +33,36 @@ def index():
     return render_template('index.html')
 
 def login():
+
     """
-        Handles the logic for /login page
+    Handles the logic for /login page (VULNERABLE TO SQL INJECTION)
 
-        Args:
-            - None.
+    Args:
+        - None.
 
-        Returns:
-            - rendered .html template (dashboard.html if login success or login.html if login fail)
-        """
-    bcrypt = get_bcrypt()
+    Returns:
+        - rendered .html template (dashboard.html if login success or login.html if login fail)
+    """
+    # NOTE: This code is intentionally made vulnerable to SQL injection for educational purposes.
+    # DO NOT use this code in a production environment.
+
     form = LoginForm()
+
     if form.validate_on_submit():
-        user = UserDB.query.filter_by(username=form.username.data).first()
-        remember_me = True if form.remember_me.data else False
+        username = form.username.data
+        password = form.password.data
+        remember_me = form.remember_me.data
+
+        # WARNING: The following line is vulnerable to SQL injection
+        query = text("SELECT * FROM user_db WHERE username = '{}' AND password = '{}'".format(username, password))
+        user = UserDB.query.from_statement(query).first()
+
         if user:
-            if bcrypt.check_password_hash(user.password, form.password.data):
-                login_user(user, remember=remember_me)
-                return redirect(url_for('blueprint.dashboard'))
-        flash('Login or password incorrect!', 'Error')
+            login_user(user, remember=remember_me)
+            return redirect(url_for('blueprint.dashboard'))
+
+        flash('Nom d\'utilisateur ou mot de passe incorrect!', 'Error')
+
     return render_template('login.html', form=form)
 
 @login_required
